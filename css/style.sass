@@ -1,0 +1,72 @@
+// Partials
+@import "partials/animations", "partials/hero", "partials/variables"
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display)
+@import url(https://fonts.googleapis.com/css?family=Black+Ops+One)
+
+body
+  margin: 0
+
+#main-wrapper
+  display: flex
+  flex-direction: row
+  height: 100vh
+
+#sidebar
+  width: 40%
+  background: $navMainBgColor
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  overflow: hidden
+  &.init
+    animation: slideInSidebar 0.2s ease-in-out
+
+nav
+  font-family: $navFont
+  font-size: 35px
+  color: $navMainFontColor
+  a
+    text-decoration: none
+    color: $navMainFontColor
+
+  ul
+    list-style-type: none
+    text-align: right
+    li
+      padding: 3px 10px 5px 15px
+      margin-right: -200px
+      transition: all 0.2s ease-in-out
+      opacity: 0
+      &.init
+        opacity: 1
+        margin-right: 0
+      &.active, &:hover
+        background: $navActiveBgColor
+        a
+          color: $navActiveFontColor
+      &:hover
+        cursor: pointer
+      &:active
+        background: $navActiveSelectColor
+      &::selection
+        background: none
+
+#page
+  width: 60%
+  padding: 20px
+  overflow: scroll
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  &.init
+    animation: slideInPage 0.2s ease-in-out
+
+  .content
+    height: 500px
+    width: 500px
+    border: 1px solid orange
+    padding: 20px
+
+  .about, .portfolio, .skills, .contact
+    background: white

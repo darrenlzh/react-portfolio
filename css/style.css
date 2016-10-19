@@ -1,0 +1,389 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(https://fonts.googleapis.com/css?family=Black+Ops+One);
+@keyframes slide {
+  from {
+    right: 0%;
+  }
+  to {
+    right: 60.7%;
+  }
+}
+
+@keyframes breakupLeft {
+  from {
+    transform: translate(0, 0) skew(-20deg);
+  }
+  to {
+    transform: translate(-365px, 1000px) skew(-20deg);
+  }
+}
+
+@keyframes breakupRight {
+  from {
+    transform: translate(0, 0) skew(-20deg);
+  }
+  to {
+    transform: translate(365px, -1000px) skew(-20deg);
+  }
+}
+
+@keyframes slideInSidebar {
+  from {
+    width: 0%;
+    width: 40%;
+  }
+}
+
+@keyframes slideInPage {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+#hero {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5em;
+  display: block;
+  height: 100vh;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero .image-container {
+  transform: skew(-20deg);
+  overflow: hidden;
+  display: block;
+  position: absolute;
+  width: 120%;
+  height: 100vh;
+  transition: all 0.6s cubic-bezier(0.64, 0.21, 0.19, 1);
+}
+
+#hero .image-container.image-bg {
+  right: 50%;
+  z-index: 1;
+  transform: translate(365px, -1000px) skew(-20deg);
+  opacity: 0;
+}
+
+#hero .image-container.image-bg .image {
+  background-image: url(/img/sf-pano.jpg);
+  width: 175%;
+  margin-left: -350px;
+}
+
+#hero .image-container.image-bg.init {
+  margin-top: 0;
+  opacity: 1;
+  transform: translate(0, 0) skew(-20deg);
+}
+
+#hero .image-container.image-non {
+  left: 50%;
+  z-index: 2;
+  transform: translate(-365px, 1000px) skew(-20deg);
+  opacity: 0;
+}
+
+#hero .image-container.image-non .image {
+  background: black;
+  margin-left: -180px;
+}
+
+#hero .image-container.image-non.init {
+  margin-top: 0;
+  opacity: 1;
+  transform: translate(0, 0) skew(-20deg);
+}
+
+#hero .image-container .image {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  transition: all 0.3s ease-out;
+  transform: skew(20deg);
+}
+
+#hero.animate-slide {
+  animation: slide 0.6s cubic-bezier(0.64, 0.21, 0.26, 1.4);
+}
+
+#hero.animate-slide .button, #hero.animate-slide .name {
+  position: absolute;
+}
+
+#hero.animate-breakup .image-bg {
+  animation: breakupLeft 0.6s cubic-bezier(0.64, 0.21, 0.19, 1);
+}
+
+#hero.animate-breakup .image-non {
+  animation: breakupRight 0.6s cubic-bezier(0.64, 0.21, 0.19, 1);
+}
+
+#hero .button {
+  border: 10px solid white;
+  height: 0;
+  width: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 3;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+#hero .button div {
+  height: 0;
+  width: 0;
+  border: 4px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: inherit;
+}
+
+#hero .button div.init {
+  transform: rotate(-135deg);
+}
+
+#hero .button span {
+  position: fixed;
+  z-index: 4;
+  transform: rotate(-45deg);
+}
+
+#hero .button.init {
+  opacity: 1;
+  height: 200px;
+  width: 200px;
+}
+
+#hero .button.init div {
+  opacity: 1;
+  height: 180px;
+  width: 180px;
+}
+
+#hero .button.exit {
+  opacity: 0;
+  width: 300px;
+  height: 300px;
+}
+
+#hero .button.exit div {
+  opacity: 0;
+  height: 280px;
+  width: 280px;
+}
+
+#hero .button.exit span {
+  opacity: 0;
+}
+
+#hero .button:hover {
+  cursor: pointer;
+}
+
+#hero .button:hover div {
+  background: white;
+  color: black;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+#hero .button:hover span {
+  color: black;
+}
+
+#hero .name {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: -34px;
+  color: #0f0f0f;
+  z-index: 4;
+  width: auto;
+  height: auto;
+  font-size: 5em;
+  font-family: "Black Ops One", cursive;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#hero .name:hover {
+  cursor: pointer;
+  color: #1e1e1e;
+}
+
+#hero .name.init {
+  opacity: 1;
+}
+
+#hero .name.exit {
+  opacity: 0;
+  bottom: -100px;
+}
+
+#hero .arrow {
+  display: block;
+  position: relative;
+  z-index: 6;
+  margin-left: auto;
+  margin-top: 47vh;
+  margin-right: 20px;
+  width: 70px;
+  height: 70px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#hero .arrow #upperline, #hero .arrow #lowerline {
+  width: 2px;
+  height: 30px;
+  background: #545454;
+  transition: all 0.3s ease-in-out;
+}
+
+#hero .arrow #upperline {
+  transform: translate(35px, 10px) rotate(-45deg);
+}
+
+#hero .arrow #lowerline {
+  transform: translate(35px, 0px) rotate(45deg);
+}
+
+#hero .arrow:hover {
+  cursor: pointer;
+}
+
+#hero .arrow:hover #upperline, #hero .arrow:hover #lowerline {
+  background: LightGrey;
+}
+
+#hero .arrow:hover #upperline {
+  transform: translate(40px, 10px) rotate(-45deg);
+}
+
+#hero .arrow:hover #lowerline {
+  transform: translate(40px, 0px) rotate(45deg);
+}
+
+#hero .arrow.init {
+  opacity: 1;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+#hero .arrow.exit {
+  opacity: 0;
+  margin-right: -100px;
+}
+
+body {
+  margin: 0;
+}
+
+#main-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+#sidebar {
+  width: 40%;
+  background: Black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+#sidebar.init {
+  animation: slideInSidebar 0.2s ease-in-out;
+}
+
+nav {
+  font-family: "Playfair Display", serif;
+  font-size: 35px;
+  color: White;
+}
+
+nav a {
+  text-decoration: none;
+  color: White;
+}
+
+nav ul {
+  list-style-type: none;
+  text-align: right;
+}
+
+nav ul li {
+  padding: 3px 10px 5px 15px;
+  margin-right: -200px;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+
+nav ul li.init {
+  opacity: 1;
+  margin-right: 0;
+}
+
+nav ul li.active, nav ul li:hover {
+  background: White;
+}
+
+nav ul li.active a, nav ul li:hover a {
+  color: Black;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+}
+
+nav ul li:active {
+  background: LightGrey;
+}
+
+nav ul li::selection {
+  background: none;
+}
+
+#page {
+  width: 60%;
+  padding: 20px;
+  overflow: scroll;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#page.init {
+  animation: slideInPage 0.2s ease-in-out;
+}
+
+#page .content {
+  height: 500px;
+  width: 500px;
+  border: 1px solid orange;
+  padding: 20px;
+}
+
+#page .about, #page .portfolio, #page .skills, #page .contact {
+  background: white;
+}

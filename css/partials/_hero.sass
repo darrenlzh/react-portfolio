@@ -1,0 +1,181 @@
+@import "variables"
+// Variables
+
+#hero
+  font-family: $navFont
+  font-size: 1.5em
+  display: block
+  height: 100vh
+  background: white
+  position: relative
+  overflow: hidden
+
+  .image-container
+    transform: skew(-20deg)
+    overflow: hidden
+    display: block
+    position: absolute
+    width: 120%
+    height: 100vh
+    transition: all 0.6s cubic-bezier(.64,.21,.19,1)
+
+    &.image-bg
+      right: 50%
+      z-index: 1
+      transform: translate(365px,-1000px) skew(-20deg)
+      opacity: 0
+      .image
+        background-image: $heroBgImage
+        width: 175%
+        margin-left: -350px
+      &.init
+        margin-top: 0
+        opacity: 1
+        transform: translate(0,0) skew(-20deg)
+    &.image-non
+      left: 50%
+      z-index: 2
+      transform: translate(-365px,1000px) skew(-20deg)
+      opacity: 0
+      .image
+        background: black
+        margin-left: -180px
+      &.init
+        margin-top: 0
+        opacity: 1
+        transform: translate(0,0) skew(-20deg)
+    .image
+      display: block
+      width: 100%
+      height: 100vh
+      background-size: cover
+      transition: all 0.3s ease-out
+      transform: skew(20deg)
+  &.animate-slide
+    animation: slide 0.6s cubic-bezier(.64,.21,.26,1.4)
+    .button, .name
+      position: absolute
+  &.animate-breakup
+    .image-bg
+      animation: breakupLeft 0.6s cubic-bezier(.64,.21,.19,1)
+    .image-non
+      animation: breakupRight 0.6s cubic-bezier(.64,.21,.19,1)
+
+  .button
+    border: 10px solid white
+    height: 0
+    width: 0
+    color: white
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 0.3s ease-in-out
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    z-index: 3
+    transform: rotate(45deg)
+    opacity: 0
+    div
+      height: 0
+      width: 0
+      border: 4px solid white
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: all 0.3s ease-in-out
+      position: inherit
+      &.init
+        transform: rotate(-135deg)
+    span
+      position: fixed
+      z-index: 4
+      transform: rotate(-45deg)
+    &.init
+      opacity: 1
+      height: 200px
+      width: 200px
+      div
+        opacity: 1
+        height: 180px
+        width: 180px
+    &.exit
+      opacity: 0
+      width: 300px
+      height: 300px
+      div
+        opacity: 0
+        height: 280px
+        width: 280px
+      span
+        opacity: 0
+    &:hover
+      cursor: pointer
+      div
+        background: white
+        color: black
+        opacity: 1
+        transform: rotate(0deg)
+      span
+        color: black
+
+  .name
+    display: block
+    position: fixed
+    right: 0
+    bottom: -34px
+    color: $nameColor
+    z-index: 4
+    width: auto
+    height: auto
+    font-size: 5em
+    font-family: $nameFont
+    opacity: 0
+    transition: all 0.3s ease-in-out
+    &:hover
+      cursor: pointer
+      color: $nameHoverColor
+    &.init
+      opacity: 1
+    &.exit
+      opacity: 0
+      bottom: -100px
+
+  .arrow
+    display: block
+    position: relative
+    z-index: 6
+    margin-left: auto
+    margin-top: 47vh
+    margin-right: 20px
+    width: 70px
+    height: 70px
+    opacity: 0
+    transition: all 0.3s ease-in-out
+    #upperline, #lowerline
+      width: 2px
+      height: 30px
+      background: $arrowColor
+      transition: all 0.3s ease-in-out
+    #upperline
+      transform: translate(35px,10px) rotate(-45deg)
+    #lowerline
+      transform: translate(35px,0px) rotate(45deg)
+    &:hover
+      cursor: pointer
+      #upperline, #lowerline
+        background: $arrowHoverColor
+      #upperline
+        transform: translate(40px,10px) rotate(-45deg)
+      #lowerline
+        transform: translate(40px,0px) rotate(45deg)
+    &.init
+      opacity: 1
+      margin-left: auto
+      margin-right: 0
+    &.exit
+      opacity: 0
+      margin-right: -100px
