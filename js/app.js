@@ -1,12 +1,12 @@
 var Tab = React.createClass({displayName: "Tab",
   getInitialState: function() {
     return {
-      initialize: ''
+      animateS: ''
     };
   },
   componentDidMount: function() {
     setTimeout(function() {
-      this.setState({initialize: 'init'});
+      this.setState({animate: 'enter'});
     }.bind(this), 300);
   },
   click: function(event) {
@@ -15,7 +15,7 @@ var Tab = React.createClass({displayName: "Tab",
   },
   render: function() {
     return (
-      React.createElement("li", {className: this.props.isCurrent ? 'active '+this.state.initialize : this.state.initialize}, 
+      React.createElement("li", {className: this.props.isCurrent ? 'active '+this.state.animate : this.state.animate}, 
         React.createElement("a", {onClick: this.click, href: this.props.url}, 
           this.props.name
         )
@@ -57,22 +57,22 @@ var App = React.createClass({displayName: "App",
       welcome: welcome,
       counter: 0,
       currentTab: 0,
-      classActive: '',
-      rightImgInit: '',
-      leftImgInit: '',
-      buttonInit: '',
-      buttonInnerInit: '',
-      nameInit: '',
-      arrowInit: '',
       breakup: false,
-      slideInit: ''
+      animateHero: '',
+      animateRightImage: '',
+      animateLeftImage: '',
+      animateHeroButton: '',
+      animateHeroButtonInner: '',
+      animateHeroName: '',
+      animateHeroArrow: '',
+      animateSlideIn: ''
     };
   },
   handleClick: function() {
     setTimeout(function() {
       this.setState({hero: false});
       if (this.state.breakup) {
-        this.setState({slideInit: 'init'});
+        this.setState({animateSlideIn: 'enter'});
       }
       clearInterval(this.state.interval);
       console.log('Darren Lim: Interval stopped');
@@ -81,21 +81,21 @@ var App = React.createClass({displayName: "App",
   },
   handleClickSlide: function() {
     this.setState({
-      classActive: 'animate-slide',
-      nameInit: '',
-      arrowInit: ''
+      animateHero: 'animate-slide',
+      animateHeroName: '',
+      animateHeroArrow: ''
     });
     this.handleClick();
   },
   handleClickBreakup: function() {
     this.setState({
-      buttonInit: 'exit',
-      nameInit: 'exit',
-      arrowInit: 'exit',
+      animateHeroButton: 'exit',
+      animateHeroName: 'exit',
+      animateHeroArrow: 'exit',
       breakup: true
     });
     setTimeout(function() {
-      this.setState({classActive: 'animate-breakup'});
+      this.setState({animateHero: 'animate-breakup'});
       this.handleClick();
     }.bind(this), 300);
   },
@@ -112,18 +112,18 @@ var App = React.createClass({displayName: "App",
     }
     setTimeout(function() {
       this.setState({
-        rightImgInit: 'init',
-        leftImgInit: 'init'
+        animateRightImage: 'enter',
+        animateLeftImage: 'enter'
       });
     }.bind(this), 100);
     setTimeout(function() {
-      this.setState({buttonInit: 'init'});
+      this.setState({animateHeroButton: 'enter'});
     }.bind(this), 1200);
     setTimeout(function() {
       this.setState({
-        nameInit: 'init',
-        buttonInnerInit: 'init',
-        arrowInit: 'init'
+        animateHeroName: 'enter',
+        animateHeroButtonInner: 'enter',
+        animateHeroArrow: 'enter'
       });
     }.bind(this), 2000);
   },
@@ -140,21 +140,21 @@ var App = React.createClass({displayName: "App",
     var component;
     if (this.state.hero) {
       component = (
-        React.createElement("div", {id: "hero", className: this.state.classActive}, 
-          React.createElement("div", {className: 'image-container image-bg '+this.state.rightImgInit}, 
+        React.createElement("div", {id: "hero", className: this.state.animateHero}, 
+          React.createElement("div", {className: 'image-container image-bg '+this.state.animateRightImage}, 
             React.createElement("div", {className: "image"})
           ), 
-          React.createElement("div", {className: 'image-container image-non '+this.state.leftImgInit}, 
+          React.createElement("div", {className: 'image-container image-non '+this.state.animateLeftImage}, 
             React.createElement("div", {className: "image"})
           ), 
-          React.createElement("div", {className: 'button '+this.state.buttonInit, 
+          React.createElement("div", {className: 'button '+this.state.animateHeroButton, 
                onClick: this.handleClickBreakup}, 
-            React.createElement("div", {className: this.state.buttonInnerInit}), 
+            React.createElement("div", {className: this.state.animateHeroButtonInner}), 
             React.createElement("span", null, this.state.welcome[this.state.counter])
           ), 
-          React.createElement("div", {className: 'name '+this.state.nameInit, 
+          React.createElement("div", {className: 'name '+this.state.animateHeroName, 
                onClick: this.handleClickSlide}, "Darren Lim"), 
-          React.createElement("div", {className: 'arrow '+this.state.arrowInit, 
+          React.createElement("div", {className: 'arrow '+this.state.animateHeroArrow, 
                onClick: this.handleClickSlide}, 
             React.createElement("div", {id: "upperline"}), 
             React.createElement("div", {id: "lowerline"})
@@ -165,14 +165,14 @@ var App = React.createClass({displayName: "App",
     else {
       component = (
         React.createElement("div", {id: "main-wrapper"}, 
-          React.createElement("div", {id: "sidebar", className: this.state.slideInit}, 
+          React.createElement("div", {id: "sidebar", className: this.state.animateSlideIn}, 
             React.createElement(Nav, {
               currentTab: this.state.currentTab, 
               navlist: this.state.navlist, 
               changeTab: this.changeTab}
             )
           ), 
-          React.createElement("div", {id: "page", className: this.state.slideInit}, 
+          React.createElement("div", {id: "page", className: this.state.animateSlideIn}, 
             React.createElement("div", {className: "content"}, 
               this.state.navlist[this.state.currentTab].content
             )
@@ -203,27 +203,31 @@ var welcome = [
 
 var navlist = [
   {
-    'name': 'about me',
-    'url': '/about',
-    'content':
+    id: 0,
+    name: 'about me',
+    url: '/about',
+    content:
       React.createElement("div", {className: "about"}, "stuff")
   },
   {
-    'name': 'portfolio',
-    'url': '/portfolio',
-    'content':
+    id: 1,
+    name: 'portfolio',
+    url: '/portfolio',
+    content:
       React.createElement("div", {className: "portfolio"}, "portfolio")
   },
   {
-    'name': 'my skills',
-    'url': '/skills',
-    'content':
+    id: 2,
+    name: 'my skills',
+    url: '/skills',
+    content:
       React.createElement("div", {className: "skills"}, "skills")
   },
   {
-    'name': 'contact me',
-    'url': '/contact',
-    'content':
+    id: 3,
+    name: 'contact me',
+    url: '/contact',
+    content:
       React.createElement("div", {className: "contact"}, "contact")
   }
 ];

@@ -76,7 +76,7 @@
   margin-left: -350px;
 }
 
-#hero .image-container.image-bg.init {
+#hero .image-container.image-bg.enter {
   margin-top: 0;
   opacity: 1;
   transform: translate(0, 0) skew(-20deg);
@@ -94,7 +94,7 @@
   margin-left: -180px;
 }
 
-#hero .image-container.image-non.init {
+#hero .image-container.image-non.enter {
   margin-top: 0;
   opacity: 1;
   transform: translate(0, 0) skew(-20deg);
@@ -156,7 +156,7 @@
   position: inherit;
 }
 
-#hero .button div.init {
+#hero .button div.enter {
   transform: rotate(-135deg);
 }
 
@@ -166,13 +166,13 @@
   transform: rotate(-45deg);
 }
 
-#hero .button.init {
+#hero .button.enter {
   opacity: 1;
   height: 200px;
   width: 200px;
 }
 
-#hero .button.init div {
+#hero .button.enter div {
   opacity: 1;
   height: 180px;
   width: 180px;
@@ -229,7 +229,7 @@
   color: #1e1e1e;
 }
 
-#hero .name.init {
+#hero .name.enter {
   opacity: 1;
 }
 
@@ -282,7 +282,7 @@
   transform: translate(40px, 0px) rotate(45deg);
 }
 
-#hero .arrow.init {
+#hero .arrow.enter {
   opacity: 1;
   margin-left: auto;
   margin-right: 0;
@@ -312,7 +312,7 @@ body {
   overflow: hidden;
 }
 
-#sidebar.init {
+#sidebar.enter {
   animation: slideInSidebar 0.2s ease-in-out;
 }
 
@@ -339,7 +339,7 @@ nav ul li {
   opacity: 0;
 }
 
-nav ul li.init {
+nav ul li.enter {
   opacity: 1;
   margin-right: 0;
 }
@@ -373,14 +373,14 @@ nav ul li::selection {
   align-items: center;
 }
 
-#page.init {
+#page.enter {
   animation: slideInPage 0.2s ease-in-out;
 }
 
 #page .content {
   height: 500px;
   width: 500px;
-  border: 1px solid orange;
+  border: 1px solid red;
   padding: 20px;
 }
 

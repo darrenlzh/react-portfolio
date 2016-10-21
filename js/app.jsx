@@ -2,12 +2,12 @@
 var Tab = React.createClass({
   getInitialState: function() {
     return {
-      initialize: ''
+      animateS: ''
     };
   },
   componentDidMount: function() {
     setTimeout(function() {
-      this.setState({initialize: 'init'});
+      this.setState({animate: 'enter'});
     }.bind(this), 300);
   },
   click: function(event) {
@@ -16,7 +16,7 @@ var Tab = React.createClass({
   },
   render: function() {
     return (
-      <li className={this.props.isCurrent ? 'active '+this.state.initialize : this.state.initialize}>
+      <li className={this.props.isCurrent ? 'active '+this.state.animate : this.state.animate}>
         <a onClick={this.click} href={this.props.url}>
           {this.props.name}
         </a>
@@ -58,22 +58,22 @@ var App = React.createClass({
       welcome: welcome,
       counter: 0,
       currentTab: 0,
-      classActive: '',
-      rightImgInit: '',
-      leftImgInit: '',
-      buttonInit: '',
-      buttonInnerInit: '',
-      nameInit: '',
-      arrowInit: '',
       breakup: false,
-      slideInit: ''
+      animateHero: '',
+      animateRightImage: '',
+      animateLeftImage: '',
+      animateHeroButton: '',
+      animateHeroButtonInner: '',
+      animateHeroName: '',
+      animateHeroArrow: '',
+      animateSlideIn: ''
     };
   },
   handleClick: function() {
     setTimeout(function() {
       this.setState({hero: false});
       if (this.state.breakup) {
-        this.setState({slideInit: 'init'});
+        this.setState({animateSlideIn: 'enter'});
       }
       clearInterval(this.state.interval);
       console.log('Darren Lim: Interval stopped');
@@ -82,21 +82,21 @@ var App = React.createClass({
   },
   handleClickSlide: function() {
     this.setState({
-      classActive: 'animate-slide',
-      nameInit: '',
-      arrowInit: ''
+      animateHero: 'animate-slide',
+      animateHeroName: '',
+      animateHeroArrow: ''
     });
     this.handleClick();
   },
   handleClickBreakup: function() {
     this.setState({
-      buttonInit: 'exit',
-      nameInit: 'exit',
-      arrowInit: 'exit',
+      animateHeroButton: 'exit',
+      animateHeroName: 'exit',
+      animateHeroArrow: 'exit',
       breakup: true
     });
     setTimeout(function() {
-      this.setState({classActive: 'animate-breakup'});
+      this.setState({animateHero: 'animate-breakup'});
       this.handleClick();
     }.bind(this), 300);
   },
@@ -113,18 +113,18 @@ var App = React.createClass({
     }
     setTimeout(function() {
       this.setState({
-        rightImgInit: 'init',
-        leftImgInit: 'init'
+        animateRightImage: 'enter',
+        animateLeftImage: 'enter'
       });
     }.bind(this), 100);
     setTimeout(function() {
-      this.setState({buttonInit: 'init'});
+      this.setState({animateHeroButton: 'enter'});
     }.bind(this), 1200);
     setTimeout(function() {
       this.setState({
-        nameInit: 'init',
-        buttonInnerInit: 'init',
-        arrowInit: 'init'
+        animateHeroName: 'enter',
+        animateHeroButtonInner: 'enter',
+        animateHeroArrow: 'enter'
       });
     }.bind(this), 2000);
   },
@@ -141,21 +141,21 @@ var App = React.createClass({
     var component;
     if (this.state.hero) {
       component = (
-        <div id="hero" className={this.state.classActive}>
-          <div className={'image-container image-bg '+this.state.rightImgInit}>
+        <div id="hero" className={this.state.animateHero}>
+          <div className={'image-container image-bg '+this.state.animateRightImage}>
             <div className="image"></div>
           </div>
-          <div className={'image-container image-non '+this.state.leftImgInit}>
+          <div className={'image-container image-non '+this.state.animateLeftImage}>
             <div className="image"></div>
           </div>
-          <div className={'button '+this.state.buttonInit}
+          <div className={'button '+this.state.animateHeroButton}
                onClick={this.handleClickBreakup}>
-            <div className={this.state.buttonInnerInit}></div>
+            <div className={this.state.animateHeroButtonInner}></div>
             <span>{this.state.welcome[this.state.counter]}</span>
           </div>
-          <div className={'name '+this.state.nameInit}
+          <div className={'name '+this.state.animateHeroName}
                onClick={this.handleClickSlide}>Darren Lim</div>
-          <div className={'arrow '+this.state.arrowInit}
+          <div className={'arrow '+this.state.animateHeroArrow}
                onClick={this.handleClickSlide}>
             <div id="upperline"></div>
             <div id="lowerline"></div>
@@ -166,14 +166,14 @@ var App = React.createClass({
     else {
       component = (
         <div id="main-wrapper">
-          <div id="sidebar" className={this.state.slideInit}>
+          <div id="sidebar" className={this.state.animateSlideIn}>
             <Nav
               currentTab={this.state.currentTab}
               navlist={this.state.navlist}
               changeTab={this.changeTab}
             />
           </div>
-          <div id="page" className={this.state.slideInit}>
+          <div id="page" className={this.state.animateSlideIn}>
             <div className="content">
               {this.state.navlist[this.state.currentTab].content}
             </div>
@@ -204,27 +204,31 @@ var welcome = [
 
 var navlist = [
   {
-    'name': 'about me',
-    'url': '/about',
-    'content':
+    id: 0,
+    name: 'about me',
+    url: '/about',
+    content:
       <div className="about">stuff</div>
   },
   {
-    'name': 'portfolio',
-    'url': '/portfolio',
-    'content':
+    id: 1,
+    name: 'portfolio',
+    url: '/portfolio',
+    content:
       <div className="portfolio">portfolio</div>
   },
   {
-    'name': 'my skills',
-    'url': '/skills',
-    'content':
+    id: 2,
+    name: 'my skills',
+    url: '/skills',
+    content:
       <div className="skills">skills</div>
   },
   {
-    'name': 'contact me',
-    'url': '/contact',
-    'content':
+    id: 3,
+    name: 'contact me',
+    url: '/contact',
+    content:
       <div className="contact">contact</div>
   }
 ];
