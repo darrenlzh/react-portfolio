@@ -1,8 +1,7 @@
 // Partials
 @import "partials/animations", "partials/hero", "partials/variables"
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display)
-@import url(https://fonts.googleapis.com/css?family=Black+Ops+One)
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Black+Ops+One|Orbitron|Quicksand)
 
 body
   margin: 0
@@ -29,12 +28,13 @@ nav
   a
     text-decoration: none
     color: $navMainFontColor
+    display: block
+    padding: 15px 10px 5px 15px
 
   ul
     list-style-type: none
     text-align: right
     li
-      padding: 3px 10px 5px 15px
       margin-right: -200px
       transition: all 0.2s ease-in-out
       opacity: 0
@@ -61,12 +61,28 @@ nav
   align-items: center
   &.enter
     animation: slideInPage 0.2s ease-in-out
-
-  .content
-    height: 500px
+  .content-wrapper
+    overflow: scroll
+    height: 90vh
     width: 500px
-    border: 1px solid red
     padding: 20px
+    border: 2px solid black
+    opacity: 0
+    transition: opacity 0.2s ease-in-out
+    &.enter
+      opacity: 1
+  .content
+    font-family: $contentFont
+    height: inherit
+    width: inherit
+    transition: opacity 0.2s ease-in-out
+    opacity: 0
+    &.enter
+      opacity: 1
+    &.exit
+      opacity: 0
+    h1
+      font-family: $contentHeadingFont
 
   .about, .portfolio, .skills, .contact
     background: white

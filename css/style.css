@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
-@import url(https://fonts.googleapis.com/css?family=Black+Ops+One);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display|Black+Ops+One|Orbitron|Quicksand);
 @keyframes slide {
   from {
     right: 0%;
@@ -44,7 +43,7 @@
 }
 
 #hero {
-  font-family: "Playfair Display", serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 1.5em;
   display: block;
   height: 100vh;
@@ -317,7 +316,7 @@ body {
 }
 
 nav {
-  font-family: "Playfair Display", serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 35px;
   color: White;
 }
@@ -325,6 +324,8 @@ nav {
 nav a {
   text-decoration: none;
   color: White;
+  display: block;
+  padding: 15px 10px 5px 15px;
 }
 
 nav ul {
@@ -333,7 +334,6 @@ nav ul {
 }
 
 nav ul li {
-  padding: 3px 10px 5px 15px;
   margin-right: -200px;
   transition: all 0.2s ease-in-out;
   opacity: 0;
@@ -377,11 +377,38 @@ nav ul li::selection {
   animation: slideInPage 0.2s ease-in-out;
 }
 
-#page .content {
-  height: 500px;
+#page .content-wrapper {
+  overflow: scroll;
+  height: 90vh;
   width: 500px;
-  border: 1px solid red;
   padding: 20px;
+  border: 2px solid black;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#page .content-wrapper.enter {
+  opacity: 1;
+}
+
+#page .content {
+  font-family: "Quicksand", sans-serif;
+  height: inherit;
+  width: inherit;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
+#page .content.enter {
+  opacity: 1;
+}
+
+#page .content.exit {
+  opacity: 0;
+}
+
+#page .content h1 {
+  font-family: "Playfair Display", serif;
 }
 
 #page .about, #page .portfolio, #page .skills, #page .contact {
