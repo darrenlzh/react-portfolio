@@ -248,24 +248,7 @@ var aboutMeContents = (
     "gravida vestibulum. Morbi at ullamcorper erat, accumsan dignissim urna. Nunc" + ' ' +
     "ipsum libero, ornare in aliquet a, accumsan ut nisl. Phasellus ultrices neque" + ' ' +
     "id urna efficitur imperdiet. Phasellus porttitor nec ante vulputate ultrices." + ' ' +
-    "Nulla facilisi."), 
-    React.createElement("p", null, "In hac habitasse platea dictumst. Vivamus sed turpis eget libero elementum" + ' ' +
-    "hendrerit. Sed quis leo diam. Aliquam congue sem nec erat tincidunt maximus" + ' ' +
-    "nec at sem. Curabitur ante nisi, finibus vitae bibendum et, ornare dapibus" + ' ' +
-    "dolor. Sed a luctus nulla, a ullamcorper libero. In euismod semper tortor," + ' ' +
-    "id efficitur est dignissim ac. Nullam eu semper magna, non molestie augue." + ' ' +
-    "Nam porta, massa eu condimentum porttitor, urna nunc laoreet est, sit amet" + ' ' +
-    "pretium justo dolor et nibh. Nam varius nunc vel dolor vehicula rhoncus."), 
-    React.createElement("p", null, "Duis molestie iaculis eros, in ullamcorper nibh euismod dictum. Suspendisse" + ' ' +
-    "suscipit ligula neque, egestas consequat turpis porttitor lobortis. Etiam" + ' ' +
-    "congue malesuada libero a ullamcorper. Quisque ac aliquet neque. Donec" + ' ' +
-    "malesuada massa id ornare euismod. Phasellus facilisis blandit augue quis" + ' ' +
-    "blandit. In sit amet libero eget mi elementum tincidunt. Aliquam neque nisi," + ' ' +
-    "accumsan luctus sodales vel, laoreet non dui. Quisque dictum nec elit eget" + ' ' +
-    "porttitor. Curabitur bibendum placerat nulla, quis aliquet metus ullamcorper" + ' ' +
-    "id. Pellentesque habitant morbi tristique senectus et netus et malesuada" + ' ' +
-    "fames ac turpis egestas. Proin feugiat tortor arcu, quis suscipit arcu" + ' ' +
-    "volutpat blandit.")
+    "Nulla facilisi.")
   )
 );
 
